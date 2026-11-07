@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Phan Duc Tung, backend developer (C# / .NET). Hospital information system integrations, personal projects and skills.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Phan Duc Tung | Backend Developer (.NET)">
+<meta property="og:description" content="Backend features and integrations for a hospital information system used in multiple hospitals. Projects, skills and contact.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2212%22 fill=%22%230b6e69%22/%3E%3Ctext x=%2232%22 y=%2242%22 font-family=%22Arial%22 font-weight=%22700%22 font-size=%2226%22 text-anchor=%22middle%22 fill=%22white%22%3EPT%3C/text%3E%3C/svg%3E">
+<style>
+  :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  body { margin: 0; -webkit-text-size-adjust: 100%; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+<title>Phan Duc Tung Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: one left-aligned reading column; hero pairs the statement with a real HL7 message from the work */
+  :root {
+    --bg: #f3f6f5;
+    --surface: #ffffff;
+    --ink: #132120;
+    --muted: #556563;
+    --line: #d2dedb;
+    --accent: #0b6e69;
+    --accent-soft: #e1efed;
+    --signal: #9a5d14;
+    --display: "Archivo", "Arial Narrow", Arial, sans-serif;
+    --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d1514; --surface: #142019; --ink: #e2ebe9; --muted: #93a6a2; --line: #253b37;
+      --accent: #5ec5ba; --accent-soft: #15302d; --signal: #e3a65a; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d1514; --surface: #142019; --ink: #e2ebe9; --muted: #93a6a2; --line: #253b37;
+    --accent: #5ec5ba; --accent-soft: #15302d; --signal: #e3a65a; color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+  p { margin: 0; }
+
+  /* top bar */
+  .top { padding-block: 22px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .mark { font-family: var(--mono); font-size: 13px; color: var(--muted); letter-spacing: 0.04em; }
+  .mark b { color: var(--ink); font-weight: 500; }
+  .nav { display: flex; gap: 18px; flex-wrap: wrap; font-size: 14px; }
+  .nav a { color: var(--muted); text-decoration: none; }
+  .nav a:hover { color: var(--accent); }
+
+  /* hero */
+  .hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 48px; align-items: center; padding-block: 40px 64px; }
+  .hero h1 { font-stretch: 118%; font-weight: 800; font-size: clamp(44px, 7vw, 76px); line-height: 0.95; letter-spacing: -0.02em; }
+  .hero .role { font-family: var(--display); font-weight: 600; font-size: 19px; color: var(--accent); margin-top: 14px; letter-spacing: 0.01em; }
+  .hero .lede { margin-top: 20px; font-size: 18px; max-width: 34em; }
+  .hero .actions { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; font: 500 15px var(--body); padding: 10px 18px; border-radius: 6px; text-decoration: none; border: 1px solid var(--accent); cursor: pointer; }
+  .btn.primary { background: var(--accent); color: var(--bg); }
+  .btn.ghost { background: transparent; color: var(--accent); }
+
+  .hl7 { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; min-width: 0; }
+  .hl7-head { display: flex; justify-content: space-between; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .hl7 pre { margin: 0; padding: 16px; font-family: var(--mono); font-size: 13px; line-height: 1.75; overflow-x: auto; color: var(--ink); }
+  .hl7 .d { color: var(--signal); }
+  .hl7 .seg { color: var(--accent); font-weight: 500; }
+  .hl7 .hit { background: var(--accent-soft); color: var(--accent); border-radius: 3px; padding: 1px 3px; font-weight: 500; }
+  .hl7-note { padding: 12px 16px; border-top: 1px dashed var(--line); font-size: 13.5px; color: var(--muted); }
+  .hl7-note b { color: var(--ink); font-weight: 600; }
+
+  /* sections */
+  section.block { padding-block: 56px; border-top: 1px solid var(--line); }
+  .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  section.block > .wrap > h2 { font-size: clamp(28px, 4vw, 38px); font-stretch: 105%; font-weight: 700; margin-top: 8px; letter-spacing: -0.01em; }
+  .intro { margin-top: 14px; max-width: 40em; color: var(--muted); font-size: 17px; }
+
+  /* context strip */
+  .facts { margin-top: 28px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .fact { border-left: 2px solid var(--accent); padding: 4px 0 4px 14px; }
+  .fact .n { font-family: var(--display); font-stretch: 110%; font-weight: 700; font-size: 30px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .fact .l { font-size: 14px; color: var(--muted); }
+
+  /* case studies */
+  .cases { margin-top: 32px; display: grid; gap: 0; }
+  .case { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 32px; padding-block: 26px; border-top: 1px solid var(--line); }
+  .case:first-child { border-top: 0; padding-top: 0; }
+  .case h3 { font-size: 21px; font-weight: 700; font-stretch: 102%; line-height: 1.2; }
+  .case .kind { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 8px; }
+  .case dl { margin: 0; display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 8px 16px; }
+  .case dt { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+  .case dd { margin: 0; max-width: 38em; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .tag { font-family: var(--mono); font-size: 12px; padding: 3px 9px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); }
+  .also { margin-top: 28px; padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+  .also h3 { font-size: 15px; font-weight: 700; font-family: var(--body); }
+  .also ul { margin: 8px 0 0; padding-left: 20px; display: grid; gap: 4px; }
+
+  /* process */
+  .steps { margin-top: 30px; list-style: none; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; counter-reset: s; }
+  .steps li { counter-increment: s; padding: 18px 18px 18px 0; border-top: 2px solid var(--line); position: relative; }
+  .steps li::before { content: "Step " counter(s); display: block; font-family: var(--mono); font-size: 12px; color: var(--accent); margin-bottom: 8px; letter-spacing: 0.06em; }
+  .steps li::after { content: ""; position: absolute; top: -2px; left: 0; width: 36px; height: 2px; background: var(--accent); }
+  .steps b { display: block; font-family: var(--display); font-size: 17px; font-weight: 700; line-height: 1.25; margin-bottom: 6px; }
+  .steps span { font-size: 14.5px; color: var(--muted); }
+
+  /* projects */
+  .projects { margin-top: 30px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .proj { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 22px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .proj h3 { font-size: 19px; font-weight: 700; }
+  .proj .kind { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .proj p { font-size: 15px; }
+  .proj .tags { margin-top: auto; padding-top: 6px; }
+  .proj a.repo { font-family: var(--mono); font-size: 13px; word-break: break-all; }
+
+  /* skills */
+  .skills { margin-top: 30px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  .skills h3 { font-family: var(--body); font-size: 15px; font-weight: 600; }
+  .skills .sub { font-size: 13.5px; color: var(--muted); margin-top: 2px; }
+  .skills ul { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .skills li { font-size: 14px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); }
+  .skills .core li { border-color: var(--accent); color: var(--accent); }
+
+  /* timeline */
+  .timeline { margin-top: 30px; display: grid; gap: 0; }
+  .t-row { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 24px; padding-block: 18px; border-top: 1px solid var(--line); }
+  .t-row:first-child { border-top: 0; }
+  .t-date { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums; }
+  .t-row h3 { font-size: 18px; font-weight: 700; font-family: var(--display); }
+  .t-row .org { color: var(--muted); }
+  .t-row p.d { margin-top: 6px; max-width: 42em; font-size: 15px; }
+
+  /* contact */
+  .contact { margin-top: 26px; display: grid; gap: 10px; max-width: 640px; }
+  .c-row { display: grid; grid-template-columns: 90px minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 12px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+  .c-row .k { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .c-row .v { font-size: 15.5px; word-break: break-all; user-select: all; }
+  .copy { font: 500 13px var(--body); padding: 6px 12px; border-radius: 5px; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; }
+  .copy:hover { border-color: var(--accent); color: var(--accent); }
+  footer { padding-block: 40px 56px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-block: 24px 48px; }
+    .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .case { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+    .steps { grid-template-columns: minmax(0, 1fr); }
+    .steps li { padding-right: 0; }
+    .projects, .skills { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .case dl { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .case dd { margin-bottom: 8px; }
+    .t-row { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+    .c-row { grid-template-columns: minmax(0, 1fr) auto; }
+    .c-row .k { grid-column: 1 / -1; }
+    .nav { display: none; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .btn, .copy, .nav a { transition: color .15s, border-color .15s, background-color .15s; }
+  }
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <div class="mark"><b>pdtung</b> · backend .NET</div>
+  <nav class="nav" aria-label="Sections">
+    <a href="#work">Work</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <h1>Phan Duc Tung</h1>
+      <p class="role">Backend Developer · C# / .NET</p>
+      <p class="lede">I build backend features for a Hospital Information System that runs every day in multiple hospitals. Most of my work is the part between systems: APIs, data and integrations with imaging, labs, messaging and partner portals.</p>
+      <div class="actions">
+        <a class="btn primary" href="#work">See my work</a>
+        <a class="btn ghost" href="https://github.com/pdtung03" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <figure class="hl7" style="margin:0" aria-label="Sample HL7 v2 result message from an imaging system">
+      <div class="hl7-head"><span>PACS → HIS · HL7 v2 ORU^R01</span><span>sample data</span></div>
+<pre><span class="seg">MSH</span><span class="d">|^~\&amp;|</span>PACS<span class="d">|</span>RIS<span class="d">|</span>HIS<span class="d">|</span>HOSPITAL<span class="d">|</span>20261105091502<span class="d">||</span>ORU<span class="d">^</span>R01<span class="d">|</span>MSG000123<span class="d">|</span>P<span class="d">|</span>2.3
+<span class="seg">PID</span><span class="d">|</span>1<span class="d">||</span>PT0001234<span class="d">||</span>DEMO<span class="d">^</span>PATIENT<span class="d">||</span>19800101<span class="d">|</span>M
+<span class="seg">OBR</span><span class="d">|</span>1<span class="d">|</span>SR000987<span class="d">||</span>CT001<span class="d">^</span>CT Chest<span class="d">|||</span><span class="hit">20261105083512</span>
+<span class="seg">OBX</span><span class="d">|</span>1<span class="d">|</span>TX<span class="d">|</span>IMP<span class="d">^</span>Impression<span class="d">||</span>No acute findings.</pre>
+      <figcaption class="hl7-note"><b>OBR-7</b> is the time the exam actually started. The HIS was overwriting it in four places; I traced each one so the record keeps the time PACS reports.</figcaption>
+    </figure>
+  </div>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <p class="eyebrow">Selected work · Vietsens Group</p>
+      <h2>Inside a hospital system at scale</h2>
+      <p class="intro">The system is large, so here is the context first, then the parts I owned directly. Hospital names and internal details are left out.</p>
+
+      <div class="facts">
+        <div class="fact"><div class="n">~580</div><div class="l">API controllers in the core backend</div></div>
+        <div class="fact"><div class="n">1,000+</div><div class="l">desktop plugin modules (WinForms)</div></div>
+        <div class="fact"><div class="n">30+</div><div class="l">subsystems with their own database schema</div></div>
+        <div class="fact"><div class="n">Oracle</div><div class="l">behind ASP.NET Web API and Entity Framework</div></div>
+      </div>
+
+      <div class="cases" style="margin-top:44px">
+        <article class="case">
+          <div>
+            <h3>Imaging results over HL7</h3>
+            <p class="kind">Integration · backend</p>
+          </div>
+          <div>
+            <dl>
+              <dt>Problem</dt><dd>The exam start time sent by PACS in OBR-7 did not survive. Other steps in the HIS wrote their own time over it, so the record showed the wrong moment.</dd>
+              <dt>What I did</dt><dd>Followed every path that writes that column, found four, and changed them so the time from PACS is kept.</dd>
+            </dl>
+            <div class="tags"><span class="tag">HL7 v2</span><span class="tag">ASP.NET Web API</span><span class="tag">Oracle</span></div>
+          </div>
+        </article>
+
+        <article class="case">
+          <div>
+            <h3>Patient notifications on Zalo</h3>
+            <p class="kind">Integration · backend</p>
+          </div>
+          <div>
+            <dl>
+              <dt>Problem</dt><dd>Hospitals wanted appointment and result messages sent to patients on Zalo instead of SMS only.</dd>
+              <dt>What I did</dt><dd>Connected the HIS to the company message hub API and built the sending logic, then covered it with 138 offline test cases before it reached QA.</dd>
+            </dl>
+            <div class="tags"><span class="tag">REST</span><span class="tag">C#</span><span class="tag">Offline tests</span></div>
+          </div>
+        </article>
+
+        <article class="case">
+          <div>
+            <h3>Hospital procurement portal</h3>
+            <p class="kind">Integration · backend + desktop</p>
+          </div>
+          <div>
+            <dl>
+              <dt>Problem</dt><dd>A hospital had to send purchasing data to an external procurement portal.</dd>
+              <dt>What I did</dt><dd>Worked out the API contract with the partner, wrote the design document, then built the backend endpoints and the desktop screens that send the data.</dd>
+            </dl>
+            <div class="tags"><span class="tag">API design</span><span class="tag">WinForms / DevExpress</span><span class="tag">Oracle</span></div>
+          </div>
+        </article>
+
+        <article class="case">
+          <div>
+            <h3>Testing without a test server</h3>
+            <p class="kind">Tooling</p>
+          </div>
+          <div>
+            <dl>
+              <dt>Problem</dt><dd>New backend code often could not run on the shared test environment until database models were regenerated and deployed.</dd>
+              <dt>What I did</dt><dd>Built a small console harness that loads the real backend and plugin DLLs by reflection, injects configuration and points every API client at a mock HTTP server. Features get tested the day they are written.</dd>
+            </dl>
+            <div class="tags"><span class="tag">C# reflection</span><span class="tag">Mock server</span><span class="tag">40–140 cases per feature</span></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="also">
+        <h3>Also shipped</h3>
+        <ul>
+          <li>Blood product ordering as technical services, passed to the blood-bank system (Labconn).</li>
+          <li>Barcode label printing for lab samples through BarTender.</li>
+          <li>Hospital-specific options at reception, treatment finish and pharmacy, each behind its own configuration key.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="process">
+    <div class="wrap">
+      <p class="eyebrow">How I ship</p>
+      <h2>One change, many hospitals</h2>
+      <p class="intro">Every hospital runs the same code. A change requested by one hospital must not change anything for the others, so each feature goes through the same steps.</p>
+      <ol class="steps">
+        <li><b>Design document first</b><span>Write the analysis and design, confirm the business rules with the BA.</span></li>
+        <li><b>Behind a config key</b><span>Off by default, so other hospitals keep today's behaviour.</span></li>
+        <li><b>Additive migrations</b><span>New Oracle columns and tables only; released scripts are never edited.</span></li>
+        <li><b>Compatible APIs</b><span>New fields are optional, so older clients keep working.</span></li>
+        <li><b>Test, then QA</b><span>Offline harness, then the shared test environment, then hand over to QA.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="projects">
+    <div class="wrap">
+      <p class="eyebrow">Personal and school projects</p>
+      <h2>Code you can read</h2>
+      <div class="projects">
+        <article class="proj">
+          <p class="kind">Personal project</p>
+          <h3>Blog Website</h3>
+          <p>Blogging platform with REST APIs for posts, categories and subscriptions, ASP.NET Identity with roles, and a Blazor frontend. Controller, service and repository layers with dependency injection.</p>
+          <a class="repo" href="https://github.com/pdtung03/BlazingBlog" target="_blank" rel="noopener">github.com/pdtung03/BlazingBlog</a>
+          <div class="tags"><span class="tag">ASP.NET Core</span><span class="tag">EF Core</span><span class="tag">SQL Server</span><span class="tag">Blazor</span></div>
+        </article>
+        <article class="proj">
+          <p class="kind">FPT University · group</p>
+          <h3>Clinic Booking</h3>
+          <p>Appointment booking for a clinic: doctor management, appointment handling, and separate permissions for patients and doctors. Server-rendered Razor views.</p>
+          <a class="repo" href="https://github.com/Nguyenthienan3006/Clinic-Booking-Website_MVC" target="_blank" rel="noopener">github.com/Nguyenthienan3006/Clinic-Booking-Website_MVC</a>
+          <div class="tags"><span class="tag">ASP.NET MVC</span><span class="tag">Razor</span><span class="tag">SQL Server</span></div>
+        </article>
+        <article class="proj">
+          <p class="kind">Group project</p>
+          <h3>FTOP Student Wallet</h3>
+          <p>Digital wallet for FPT University students: top-up, payment and transaction history for web and mobile clients, with role-based access to wallet endpoints.</p>
+          <a class="repo" href="https://github.com/chung1607/FTOP_WebApp_BE" target="_blank" rel="noopener">github.com/chung1607/FTOP_WebApp_BE</a>
+          <div class="tags"><span class="tag">NestJS</span><span class="tag">MySQL</span><span class="tag">Docker</span><span class="tag">React</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="wrap">
+      <p class="eyebrow">Skills</p>
+      <h2>What I use, and where</h2>
+      <div class="skills">
+        <div class="core">
+          <h3>Used in production</h3>
+          <p class="sub">Daily, on the hospital system</p>
+          <ul><li>C#</li><li>ASP.NET Web API</li><li>Entity Framework</li><li>LINQ</li><li>Oracle SQL</li><li>.NET Framework</li><li>WinForms / DevExpress</li><li>HL7 v2</li><li>REST</li><li>Swagger</li><li>Postman</li><li>Git</li><li>SVN</li></ul>
+        </div>
+        <div>
+          <h3>Personal and school projects</h3>
+          <p class="sub">Built and shipped, not in production at work</p>
+          <ul><li>ASP.NET Core</li><li>EF Core</li><li>ASP.NET MVC</li><li>Blazor</li><li>SQL Server</li><li>MySQL</li><li>Docker</li><li>NestJS</li><li>Laravel</li></ul>
+        </div>
+        <div>
+          <h3>Learning now</h3>
+          <p class="sub">Self-study and side projects</p>
+          <ul><li>.NET 8</li><li>Clean Architecture</li><li>RabbitMQ</li><li>Redis</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="wrap">
+      <p class="eyebrow">Experience and education</p>
+      <h2>Where I have worked</h2>
+      <div class="timeline">
+        <div class="t-row">
+          <div class="t-date">Oct 2024 – now</div>
+          <div><h3>.NET Developer <span class="org">· Vietsens Group JSC</span></h3>
+            <p class="d">Backend modules and APIs for a Hospital Information System, plus WinForms/DevExpress screens. Design documents, integrations, Oracle migrations, code review.</p></div>
+        </div>
+        <div class="t-row">
+          <div class="t-date">Sep – Dec 2023</div>
+          <div><h3>PHP Intern <span class="org">· A.N Lab JSC</span></h3>
+            <p class="d">Backend for a food-ordering web app in Laravel and MySQL: menus, orders, authentication, payment gateway and map APIs.</p></div>
+        </div>
+        <div class="t-row">
+          <div class="t-date">2021 – 2025</div>
+          <div><h3>Software Engineering <span class="org">· FPT University</span></h3>
+            <p class="d">Bachelor's programme. English: IELTS 6.0.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2>Get in touch</h2>
+      <p class="intro">Based in Hà Nội. Open to backend .NET roles.</p>
+      <div class="contact">
+        <div class="c-row"><span class="k">Email</span><a class="v" id="v-email" href="mailto:phanductung03@gmail.com">phanductung03@gmail.com</a><button class="copy" type="button" id="copy-email" data-target="v-email">Copy</button></div>
+        <div class="c-row"><span class="k">GitHub</span><a class="v" href="https://github.com/pdtung03" target="_blank" rel="noopener">github.com/pdtung03</a><span></span></div>
+        <div class="c-row"><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/t%C3%B9ng-phan-%C4%91%E1%BB%A9c-144179320" target="_blank" rel="noopener">linkedin.com/in/tùng-phan-đức-144179320</a><span></span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Phan Duc Tung · 2026</div>
+</footer>
+
+<script>
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.dataset.target);
+      var text = el.textContent.trim();
+      var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1600); };
+      var fallback = function () {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        btn.textContent = 'Selected, press Ctrl+C';
+        setTimeout(function () { btn.textContent = 'Copy'; }, 2400);
+      };
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, fallback);
+        } else { fallback(); }
+      } catch (e) { fallback(); }
+    });
+  });
+</script>
+
+</body>
+</html>
